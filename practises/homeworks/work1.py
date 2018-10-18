@@ -48,12 +48,14 @@ def response_by_s(s):
     return response
 
 
+# 处理服务器响应的信息
+
 def parase_response(response):
-    hearders, body = response.split('\r\n\r\n', 1)
-    hearder_list = hearders.split('\r\n')
-    status = hearder_list.pop(0).split(' ')[1]
+    headers, body = response.split('\r\n\r\n', 1)
+    header_list = headers.split('\r\n')
+    status = header_list.pop(0).split(' ')[1]
     headers_dict = {}
-    for i in hearder_list:
+    for i in header_list:
         k, v = i.split(': ')
         headers_dict[k] = v
     return (status, headers_dict, body)
@@ -77,7 +79,6 @@ def get(url):
     response = response.decode('utf-8')
     status, headers_dict, body = parase_response(response)
     if status == '301':
-        print(headers_dict['Location'])
         return get(headers_dict['Location'])
     return (status, headers_dict, body)
 
