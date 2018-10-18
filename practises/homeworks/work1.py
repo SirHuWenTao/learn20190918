@@ -81,5 +81,6 @@ def get(url):
         return get(headers_dict['Location'])
     return (status, headers_dict, body)
 
+if __name__ == '__main__':
 
-status, headers_dict, body = get('http://movie.douban.com/top250')
+    status, headers_dict, body = get('http://movie.douban.com/top250')
