@@ -75,7 +75,6 @@ def get(url):
     s.send(http_request.encode('utf-8'))
 
     response = response_by_s(s)
-    print(response)
     response = response.decode('utf-8')
     status, headers_dict, body = parase_response(response)
     if status == '301':
@@ -84,6 +83,3 @@ def get(url):
 
 
 status, headers_dict, body = get('http://movie.douban.com/top250')
-print(status)
-print(headers_dict)
-print(body)
