@@ -84,3 +84,4 @@ def get(url):
 if __name__ == '__main__':
 
     status, headers_dict, body = get('http://movie.douban.com/top250')
+    print(body)
